@@ -1,36 +1,67 @@
+package io.rohithram.flexmimic;
+
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import io.rohithram.flexmimic.R;
+import java.util.List;
 
 /**
  * Created by rohithram on 14/6/17.
  */
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  implements View.OnClickListener{
     Context context;
-
+    List<String> cardcontent;
+    List<String> carddate;
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.main1, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.content_main, parent, false);
         return new ViewHolder(itemView);
+    }
+    public Adapter(Context context, List<String> cardcontent,List<String> carddate){
+        this.context = context;
+        this.cardcontent = cardcontent;
+        this.carddate = carddate;
     }
 
     @Override
     public void onBindViewHolder(Adapter.ViewHolder holder, int position) {
+        holder.tv_maindate.setText(carddate.get(holder.getAdapterPosition()));
+        holder.tv_briefdes.setText(cardcontent.get(holder.getAdapterPosition()));
+
+        holder.cv_content.setOnClickListener((View.OnClickListener) this.context);
+        holder.bt_show.setOnClickListener((View.OnClickListener) this.context);
+        holder.bt_share.setOnClickListener((View.OnClickListener) this.context);
+        holder.bt_save.setOnClickListener((View.OnClickListener) this.context);
+        holder.bt_sched.setOnClickListener((View.OnClickListener) this.context);
+        holder.bt_contact.setOnClickListener((View.OnClickListener) this.context);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.cv_content: break;
+            case R.id.bt_show: break;
+            case R.id.bt_share: break;
+            case R.id.bt_save: break;
+            case R.id.bt_sched: break;
+            case R.id.bt_contact: break;
+
+
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return cardcontent.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

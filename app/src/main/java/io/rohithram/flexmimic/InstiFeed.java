@@ -4,6 +4,8 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,10 +13,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class InstiFeed extends AppCompatActivity {
     RecyclerView rv_list;
     CardView cv_content;
     TextView tv_maindate;
+    TextView tv_briefdes;
+    Adapter customAdapter;
+    List<String> cardcontent;
+    List<String> carddate;
 
 
     @Override
@@ -23,8 +32,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main1);
 
         rv_list = (RecyclerView)findViewById(R.id.rv_list);
+        rv_list.setItemAnimator(new DefaultItemAnimator());
+        rv_list.setLayoutManager(new LinearLayoutManager(this));
+
+        tv_briefdes = (TextView)findViewById(R.id.tv_briefdes);
         tv_maindate = (TextView)findViewById(R.id.tv_maindate);
         cv_content = (CardView)findViewById(R.id.cv_content);
+
+        cardcontent = new ArrayList<>();
+        carddate = new ArrayList<>();
+
+        carddate.add("Thurs Jun 15,2017");
+        carddate.add("Fri Jun 16,2017");
+        carddate.add("Sat Jun 17,2017");
+        carddate.add("Mon Jun 19,2017");
+        carddate.add("Tues Jun 20,2017");
+        carddate.add("Wed Jun 21,2017");
+
+        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
+        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
+        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
+        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
+        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
+
+
+        customAdapter = new Adapter(this,cardcontent,carddate);
+        rv_list.setAdapter(customAdapter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
