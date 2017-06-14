@@ -15,10 +15,11 @@ import java.util.List;
  * Created by rohithram on 14/6/17.
  */
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  implements View.OnClickListener{
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
     Context context;
     List<String> cardcontent;
     List<String> carddate;
+
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.content_main, parent, false);
@@ -31,49 +32,43 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  implement
     }
 
     @Override
-    public void onBindViewHolder(Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final Adapter.ViewHolder holder, int position) {
         holder.tv_maindate.setText(carddate.get(holder.getAdapterPosition()));
         holder.tv_briefdes.setText(cardcontent.get(holder.getAdapterPosition()));
 
-        holder.cv_content.setOnClickListener((View.OnClickListener) this.context);
-        holder.bt_show.setOnClickListener((View.OnClickListener) this.context);
-        holder.bt_share.setOnClickListener((View.OnClickListener) this.context);
-        holder.bt_save.setOnClickListener((View.OnClickListener) this.context);
-        holder.bt_sched.setOnClickListener((View.OnClickListener) this.context);
-        holder.bt_contact.setOnClickListener((View.OnClickListener) this.context);
+        holder.cv_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.tv_des.setVisibility(View.VISIBLE);
+            }
+        });
+        holder.bt_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.tv_des.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.cv_content: break;
-            case R.id.bt_show: break;
-            case R.id.bt_share: break;
-            case R.id.bt_save: break;
-            case R.id.bt_sched: break;
-            case R.id.bt_contact: break;
 
-
-        }
-
-    }
-
-    @Override
+            @Override
     public int getItemCount() {
         return cardcontent.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        CardView cv_content;
-        TextView tv_maindate;
-        TextView tv_briefdes;
+        public CardView cv_content;
+        public TextView tv_maindate;
+        public TextView tv_briefdes;
+        public TextView tv_des;
         ImageButton bt_share,bt_save,bt_show,bt_sched,bt_contact;
         public ViewHolder(View itemView) {
             super(itemView);
             cv_content = (CardView)itemView.findViewById(R.id.cv_content);
             tv_maindate = (TextView)itemView.findViewById(R.id.tv_maindate);
             tv_briefdes =(TextView)itemView.findViewById(R.id.tv_briefdes);
+            tv_des = (TextView)itemView.findViewById(R.id.tv_des);
             bt_share = (ImageButton)itemView.findViewById(R.id.bt_share);
             bt_save = (ImageButton)itemView.findViewById(R.id.bt_save);
             bt_sched = (ImageButton)itemView.findViewById(R.id.bt_sched);
