@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Flexmimic</string>
+    <string-array name="spinner_list_item_array">
+        <item>My flex</item>
+        <item>Liked flex</item>
+        <item>Past Flex</item>
+    </string-array>
+</resources>
