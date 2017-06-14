@@ -1,5 +1,6 @@
 package io.rohithram.flexmimic;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -36,16 +37,40 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         holder.tv_maindate.setText(carddate.get(holder.getAdapterPosition()));
         holder.tv_briefdes.setText(cardcontent.get(holder.getAdapterPosition()));
 
+
+
         holder.cv_content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.tv_des.setVisibility(View.VISIBLE);
+                if (holder.tv_des.getVisibility() == View.GONE) {
+                    // it's collapsed - expand it
+                    holder.tv_des.setVisibility(View.VISIBLE);
+                    holder.bt_show.setImageResource(R.drawable.ic_expand_less_black_24dp);
+                } else {
+                    // it's expanded - collapse it
+                    holder.tv_des.setVisibility(View.GONE);
+                    holder.bt_show.setImageResource(R.drawable.ic_expand_more_black_24dp);
+                }
+
+                ObjectAnimator animation = ObjectAnimator.ofInt(holder.tv_des, "maxLines",holder.tv_des.getMaxLines());
+                animation.setDuration(200).start();
             }
         });
         holder.bt_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.tv_des.setVisibility(View.VISIBLE);
+                if (holder.tv_des.getVisibility() == View.GONE) {
+                    // it's collapsed - expand it
+                    holder.tv_des.setVisibility(View.VISIBLE);
+                    holder.bt_show.setImageResource(R.drawable.ic_expand_less_black_24dp);
+                } else {
+                    // it's expanded - collapse it
+                    holder.tv_des.setVisibility(View.GONE);
+                    holder.bt_show.setImageResource(R.drawable.ic_expand_more_black_24dp);
+                }
+
+                ObjectAnimator animation = ObjectAnimator.ofInt(holder.tv_des, "maxLines",holder.tv_des.getMaxLines());
+                animation.setDuration(200).start();
             }
         });
 
@@ -57,7 +82,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         return cardcontent.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         public CardView cv_content;
         public TextView tv_maindate;
         public TextView tv_briefdes;
