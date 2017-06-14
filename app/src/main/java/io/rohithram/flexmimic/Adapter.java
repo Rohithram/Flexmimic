@@ -20,22 +20,29 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
     Context context;
     List<String> cardcontent;
     List<String> carddate;
+    List<String> cardtime;
+    List<String> cardloc;
 
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.content_main, parent, false);
         return new ViewHolder(itemView);
     }
-    public Adapter(Context context, List<String> cardcontent,List<String> carddate){
+    public Adapter(Context context, List<String> cardcontent,List<String> carddate,List<String> cardtime,List<String> cardloc){
         this.context = context;
         this.cardcontent = cardcontent;
         this.carddate = carddate;
+        this.cardtime = cardtime;
+        this.cardloc = cardloc;
     }
 
     @Override
     public void onBindViewHolder(final Adapter.ViewHolder holder, int position) {
         holder.tv_maindate.setText(carddate.get(holder.getAdapterPosition()));
         holder.tv_briefdes.setText(cardcontent.get(holder.getAdapterPosition()));
+        holder.tv_date.setText(carddate.get(holder.getAdapterPosition()));
+        holder.tv_time.setText(cardtime.get(holder.getAdapterPosition()));
+        holder.tv_loc.setText(cardloc.get(holder.getAdapterPosition()));
 
 
 
@@ -87,6 +94,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         public TextView tv_maindate;
         public TextView tv_briefdes;
         public TextView tv_des;
+        public TextView tv_time;
+        public TextView tv_loc;
+        public TextView tv_date;
         ImageButton bt_share,bt_save,bt_show,bt_sched,bt_contact;
         public ViewHolder(View itemView) {
             super(itemView);
@@ -94,6 +104,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
             tv_maindate = (TextView)itemView.findViewById(R.id.tv_maindate);
             tv_briefdes =(TextView)itemView.findViewById(R.id.tv_briefdes);
             tv_des = (TextView)itemView.findViewById(R.id.tv_des);
+            tv_date = (TextView)itemView.findViewById(R.id.tv_date);
+            tv_time = (TextView)itemView.findViewById(R.id.tv_time);
+            tv_loc = (TextView)itemView.findViewById(R.id.tv_loc);
+
             bt_share = (ImageButton)itemView.findViewById(R.id.bt_share);
             bt_save = (ImageButton)itemView.findViewById(R.id.bt_save);
             bt_sched = (ImageButton)itemView.findViewById(R.id.bt_sched);

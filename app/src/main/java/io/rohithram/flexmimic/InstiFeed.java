@@ -24,6 +24,8 @@ public class InstiFeed extends AppCompatActivity {
     Adapter customAdapter;
     List<String> cardcontent;
     List<String> carddate;
+    List<String> cardtime;
+    List<String> cardloc;
 
 
     @Override
@@ -41,6 +43,8 @@ public class InstiFeed extends AppCompatActivity {
 
         cardcontent = new ArrayList<>();
         carddate = new ArrayList<>();
+        cardtime = new ArrayList<>();
+        cardloc = new ArrayList<>();
 
         carddate.add("Thurs Jun 15,2017");
         carddate.add("Fri Jun 16,2017");
@@ -49,14 +53,30 @@ public class InstiFeed extends AppCompatActivity {
         carddate.add("Tues Jun 20,2017");
         carddate.add("Wed Jun 21,2017");
 
-        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
-        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
-        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
-        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
-        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
+        cardtime.add("10.00 AM");
+        cardtime.add("11.00 AM");
+        cardtime.add("5.00 PM");
+        cardtime.add("10.00 AM");
+        cardtime.add("4.00 pM");
+        cardtime.add("10.00 AM");
+
+        cardloc.add("SAC");
+        cardloc.add("CLT");
+        cardloc.add("CRC 101");
+        cardloc.add("HSB Hall");
+        cardloc.add("ICSR");
+        cardloc.add("CLT");
 
 
-        customAdapter = new Adapter(this,cardcontent,carddate);
+        cardcontent.add("UG/DD:TUM Summer School 'Engineering and Geodesy'");
+        cardcontent.add("Mentor For Interns (MFI) 2017");
+        cardcontent.add("Call for applications ||| Saathi Events Coordinators 2017-18");
+        cardcontent.add("Atma Yoga classes");
+        cardcontent.add("CSIE IIT Madras is Hiring - Call for Applications 2017-18");
+        cardcontent.add("Endsem collection drive");
+
+
+        customAdapter = new Adapter(this,cardcontent,carddate,cardtime,cardloc);
         rv_list.setAdapter(customAdapter);
     }
     @Override
