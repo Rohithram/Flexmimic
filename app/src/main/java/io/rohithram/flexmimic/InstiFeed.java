@@ -16,11 +16,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class InstiFeed extends AppCompatActivity {
     RecyclerView rv_list;
     CardView cv_content;
     TextView tv_maindate;
     TextView tv_briefdes;
+    TextView tv_des;
     Adapter customAdapter;
     List<String> cardcontent;
     List<String> carddate;
@@ -39,6 +41,7 @@ public class InstiFeed extends AppCompatActivity {
 
         tv_briefdes = (TextView)findViewById(R.id.tv_briefdes);
         tv_maindate = (TextView)findViewById(R.id.tv_maindate);
+        tv_des = (TextView)findViewById(R.id.tv_des);
         cv_content = (CardView)findViewById(R.id.cv_content);
 
         cardcontent = new ArrayList<>();
@@ -74,6 +77,9 @@ public class InstiFeed extends AppCompatActivity {
         cardcontent.add("Atma Yoga classes");
         cardcontent.add("CSIE IIT Madras is Hiring - Call for Applications 2017-18");
         cardcontent.add("Endsem collection drive");
+
+
+
 
 
         customAdapter = new Adapter(this,cardcontent,carddate,cardtime,cardloc);

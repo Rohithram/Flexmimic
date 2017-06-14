@@ -22,7 +22,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
     List<String> carddate;
     List<String> cardtime;
     List<String> cardloc;
-
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.content_main, parent, false);
@@ -34,6 +33,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         this.carddate = carddate;
         this.cardtime = cardtime;
         this.cardloc = cardloc;
+
     }
 
     @Override
